@@ -30,15 +30,16 @@ window.onload =  async function() {
         let element = document.getElementById(button);
         
         element.addEventListener("click", (e) => {
-            console.log(projects);
-            catProjects = projects.filter(project => project.category.id === index);
-            console.log(catProjects);
-            let catFigureHTML = "";
-            catProjects.forEach(project => {
-                catFigureHTML += "<figure><img src=" + project.imageUrl + " alt='" + project.title + "'><figcaption>"+ project.title + "</figcaption></figure>";
-            })
-            document.getElementById("gallery").innerHTML = catFigureHTML;
-            console.log(catFigureHTML)
+            if (index === 0) {
+                document.getElementById("gallery").innerHTML = figureHTML;
+            } else {
+                catProjects = projects.filter(project => project.category.id === index);
+                let catFigureHTML = "";
+                catProjects.forEach(project => {
+                    catFigureHTML += "<figure><img src=" + project.imageUrl + " alt='" + project.title + "'><figcaption>"+ project.title + "</figcaption></figure>";
+                })
+                document.getElementById("gallery").innerHTML = catFigureHTML;
+            }
         });
     });
 };
